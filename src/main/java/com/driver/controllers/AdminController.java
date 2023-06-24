@@ -6,7 +6,10 @@ import com.driver.services.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/admin")
@@ -21,12 +24,12 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @PostMapping("/addProvider")
-//    public ResponseEntity<Void> addServiceProvider(@RequestParam int adminId, @RequestParam String providerName){
-//        //add a serviceProvider under the admin and return updated admin
-//        Admin admin = adminService.addServiceProvider(adminId, providerName);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @PostMapping("/addProvider")
+    public ResponseEntity<Void> addServiceProvider(@RequestParam int adminId, @RequestParam String providerName){
+        //add a serviceProvider under the admin and return updated admin
+        Admin admin = adminService.addServiceProvider(adminId, providerName);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @PostMapping("/addCountry")
     public ResponseEntity<Void> addCountry(@RequestParam int serviceProviderId, @RequestParam String countryName) throws Exception{

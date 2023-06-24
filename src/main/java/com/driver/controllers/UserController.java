@@ -19,9 +19,9 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @PutMapping("/subscribe")
-//    public void subscribe(@RequestParam Integer userId, @RequestParam Integer serviceProviderId){
-//        //subscribe to the serviceProvider by adding it to the list of providers and return updated User
-//        User user = userService.subscribe(userId, serviceProviderId);
-//    }
+    @PutMapping("/subscribe")
+    public void subscribe(@RequestParam Integer userId, @RequestParam Integer serviceProviderId){
+        //subscribe to the serviceProvider by adding it to the list of providers and return updated User
+        User user = userService.subscribe(userId, serviceProviderId);
+    }
 }

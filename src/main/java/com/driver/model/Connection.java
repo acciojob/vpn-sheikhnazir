@@ -1,7 +1,5 @@
 package com.driver.model;
 
-import jdk.internal.module.ServicesCatalog;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +11,7 @@ public class Connection {
 
     @ManyToOne
     @JoinColumn
-    private ServicesCatalog.ServiceProvider serviceProvider;
+    private ServiceProvider serviceProvider;
 
     @ManyToOne
     @JoinColumn
@@ -22,7 +20,7 @@ public class Connection {
     public Connection() {
     }
 
-    public Connection(int id, ServicesCatalog.ServiceProvider serviceProvider, User user) {
+    public Connection(int id, ServiceProvider serviceProvider, User user) {
         this.id = id;
         this.serviceProvider = serviceProvider;
         this.user = user;
@@ -36,11 +34,11 @@ public class Connection {
         this.id = id;
     }
 
-    public ServicesCatalog.ServiceProvider getServiceProvider() {
+    public ServiceProvider getServiceProvider() {
         return serviceProvider;
     }
 
-    public void setServiceProvider(ServicesCatalog.ServiceProvider serviceProvider) {
+    public void setServiceProvider(ServiceProvider serviceProvider) {
         this.serviceProvider = serviceProvider;
     }
 

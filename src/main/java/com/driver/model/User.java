@@ -1,7 +1,5 @@
 package com.driver.model;
 
-import jdk.internal.module.ServicesCatalog;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class User {
     //service provider as parent in manytomany
     @ManyToMany
     @JoinColumn
-    List<ServicesCatalog.ServiceProvider> serviceProviderList = new ArrayList<>();
+    List<ServiceProvider> serviceProviderList = new ArrayList<>();
 
     public User() {
     }
@@ -114,11 +112,11 @@ public class User {
         this.connectionList = connectionList;
     }
 
-    public List<ServicesCatalog.ServiceProvider> getServiceProviderList() {
+    public List<ServiceProvider> getServiceProviderList() {
         return serviceProviderList;
     }
 
-    public void setServiceProviderList(List<ServicesCatalog.ServiceProvider> serviceProviderList) {
+    public void setServiceProviderList(List<ServiceProvider> serviceProviderList) {
         this.serviceProviderList = serviceProviderList;
     }
 }

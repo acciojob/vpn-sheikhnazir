@@ -1,4 +1,4 @@
-package com.driver.services.impl;
+package com.driver.services.Impl;
 
 import com.driver.model.Admin;
 import com.driver.model.Country;
@@ -10,6 +10,8 @@ import com.driver.repository.ServiceProviderRepository;
 import com.driver.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -31,18 +33,18 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
-//    @Override
-//    public Admin addServiceProvider(int adminId, String providerName) {
-////        Admin admin = adminRepository1.findById(adminId).get();
-////        ServiceProvider serviceProvider = new ServiceProvider();
-////        serviceProvider.setName(providerName);
-////        serviceProvider.setAdmin(admin);
-////        List<ServiceProvider> serviceProviderList = admin.getServiceProviders();
-////        serviceProviderList.add(serviceProvider);
-////        admin.setServiceProviders(serviceProviderList);
-////        adminRepository1.save(admin);
-////        return admin;
-//    }
+    @Override
+    public Admin addServiceProvider(int adminId, String providerName) {
+        Admin admin = adminRepository1.findById(adminId).get();
+        ServiceProvider serviceProvider = new ServiceProvider();
+        serviceProvider.setName(providerName);
+        serviceProvider.setAdmin(admin);
+        List<ServiceProvider> serviceProviderList = admin.getServiceProviders();
+        serviceProviderList.add(serviceProvider);
+        admin.setServiceProviders(serviceProviderList);
+        adminRepository1.save(admin);
+        return admin;
+    }
 
     @Override
     public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception{
