@@ -3,41 +3,33 @@ package com.driver.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Table
 @Entity
 public class ServiceProvider {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
 
     @ManyToOne
     @JoinColumn
-    private Admin admin;
+    Admin admin;
 
-    @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
-    List<Connection> connectionList = new ArrayList<>();
+    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
+    private List<Connection> connectionList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
-    List<Country> countryList = new ArrayList<>();
+    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
+    private List<Country> countryList = new ArrayList<>();
 
-    //service provider as parent in manytomany
     @ManyToMany
     @JoinColumn
-    List<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     public ServiceProvider() {
     }
 
-    public ServiceProvider(int id, String name, Admin admin, List<Connection> connectionList, List<Country> countryList, List<User> users) {
-        this.id = id;
+    public ServiceProvider(String name) {
         this.name = name;
-        this.admin = admin;
-        this.connectionList = connectionList;
-        this.countryList = countryList;
-        this.users = users;
     }
 
     public int getId() {
